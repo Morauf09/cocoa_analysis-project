@@ -11,21 +11,17 @@ def analyze_cocoa_data(file_path='FAOSTAT_data_7-23-2022(1).csv'):
               " or provide the correct file path.")
         return
 
-    # Filter data for Ghana and Côte d'Ivoire
     ghana_df = df[df['Area'] == 'Ghana']
     ivory_coast_df = df[df['Area'] == "Côte d'Ivoire"]
 
-    # Create organized tables for each country
     ghana_table = create_country_table(ghana_df)
     ivory_coast_table = create_country_table(ivory_coast_df)
 
-    # Save the tables to CSV files
     ghana_table.to_csv('ghana_cocoa_data.csv', index=False)
     ivory_coast_table.to_csv('ivory_coast_cocoa_data.csv', index=False)
     print("Generated 'ghana_cocoa_data.csv' and 'ivory_coast_cocoa_data.csv'")
 
 
-    # Generate and save the plots
     plot_scatter(ghana_table, 'Ghana', 'ghana_yield_plot.png')
     plot_scatter(ivory_coast_table, "Côte d'Ivoire", 'ivory_coast_yield_plot.png')
 
